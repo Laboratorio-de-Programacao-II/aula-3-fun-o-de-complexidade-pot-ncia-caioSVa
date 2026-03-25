@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 long long pot(long long base, int exp) {
     long long resultado = 1;
@@ -8,8 +9,18 @@ long long pot(long long base, int exp) {
 }
 
 long long pot_eficiente(long long base, int exp) {
-    /* IMPLEMENTAR ESTA FUNÇÃO COM ALGORITMO MAISEFICIENTE QUE POT() */
-    return 0; // Substitua este retorno pelo resultado correto
+    long valor;
+    if(exp == 0){   
+        return 1;
+    } else if (exp % 2 == 0){
+        valor = pot(base,exp/2);
+        valor = pot(valor,2);
+        return valor;
+    } else {
+        valor = pot(base,exp-1);
+        valor = valor * base;
+        return valor;
+    }
 }
 
 int main() {
